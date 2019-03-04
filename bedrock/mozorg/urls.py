@@ -329,4 +329,6 @@ urlpatterns = (
     url(r'^xbl$', views.namespaces, {'namespace': 'xbl'}),
 
     page('locales', 'mozorg/locales.html'),
+
+    page('edge-test-page', 'mozorg/edge-host-env-value.html'),
 )

@@ -1,0 +1,21 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "base-protocol.html" %}
+
+{% block page_title %}{{ _('Edge test page') }}{% endblock %}
+
+{% block content %}
+<main>
+  <div class="mzp-l-content" style="min-height: 500px;">
+    <h1>getHostEnvironmentValue <br>test page</h1>
+    <p><pre id="output"></pre></p>
+    <p><a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/mt795399%28v%3dvs.85%29">Reference documentation</a>.</p>
+  </div>
+</main>
+{% endblock %}
+
+{% block js %}
+  {{ js_bundle('edge_host_env_value') }}
+{% endblock %}

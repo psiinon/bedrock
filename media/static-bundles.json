@@ -1631,6 +1631,12 @@
         "js/firefox/election-build.js"
       ],
       "name": "firefox_election_build"
+    },
+    {
+      "files": [
+        "js/base/edge-host-env-value.js"
+      ],
+      "name": "edge_host_env_value"
     }
   ]
 }
