@@ -228,6 +228,12 @@
       "name": "firefox_new_scene1"
     },
     {
+      "files": [
+        "css/firefox/new/scene1-features-experiment.scss"
+      ],
+      "name": "experiment_firefox_new_features"
+    },
+    {
         "files": [
           "css/firefox/new/scene1.scss",
           "css/firefox/new/yandex-scene1.scss"
@@ -1128,6 +1134,19 @@
         "js/firefox/new/experiment-privacy-dmt.js"
       ],
       "name": "experiment_firefox_new_privacy_dmt"
+    },
+    {
+      "files": [
+        "js/base/mozilla-traffic-cop.js",
+        "js/firefox/new/experiment-features.js"
+      ],
+      "name": "experiment_firefox_new_features"
+    },
+    {
+      "files": [
+        "js/firefox/new/experiment-features-variation.js"
+      ],
+      "name": "experiment_firefox_new_features_variation"
     },
     {
       "files": [
