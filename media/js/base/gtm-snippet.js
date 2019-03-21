@@ -6,14 +6,35 @@
     'use strict';
 
     var GTM_CONTAINER_ID = document.getElementsByTagName('html')[0].getAttribute('data-gtm-container-id');
+    var gaCheck;
+
+    function loadOptimize() {
+        clearInterval(gaCheck);
+        window.ga('create', 'UA-36116321-1', 'auto', { allowLinker: true });
+        window.ga('require', 'GTM-M3T9SPF');
+    }
 
     // If doNotTrack is not enabled, it is ok to add GTM
     // @see https://bugzilla.mozilla.org/show_bug.cgi?id=1217896 for more details
     if (typeof Mozilla.dntEnabled === 'function' && !Mozilla.dntEnabled() && GTM_CONTAINER_ID) {
         (function(w,d,s,l,i,j,f,dl,k,q){
-            w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});f=d.getElementsByTagName(s)[0];
-            k=i.length;q='//www.googletagmanager.com/gtm.js?id=@&l='+(l||'dataLayer');
-            while(k--){j=d.createElement(s);j.async=!0;j.src=q.replace('@',i[k]);f.parentNode.insertBefore(j,f);}
-        }(window,document,'script','dataLayer',[GTM_CONTAINER_ID]));
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+            f = d.getElementsByTagName(s)[0];
+            k = i.length;
+            q = '//www.googletagmanager.com/gtm.js?id=@&l='+(l || 'dataLayer');
+            while (k--) {
+                j = d.createElement(s);
+                j.async = !0;
+                j.src = q.replace('@', i[k]);
+                f.parentNode.insertBefore(j, f);
+            }
+        }(window, document, 'script', 'dataLayer', [GTM_CONTAINER_ID]));
+
+        gaCheck = setInterval(function () {
+            if (typeof window.ga === 'function') {
+                loadOptimize();
+            }
+        }, 100);
     }
 })();

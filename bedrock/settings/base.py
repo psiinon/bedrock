@@ -1391,6 +1391,8 @@ CSP_IMG_SRC = CSP_DEFAULT_SRC + [
     'adservice.google.de',
     'adservice.google.dk',
     'creativecommons.org',
+    'ssl.gstatic.com',  # google optimize
+    'www.gstatic.com',  # google optimize
 ]
 CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + [
     # TODO fix things so that we don't need this
@@ -1403,12 +1405,19 @@ CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + [
     'tagmanager.google.com',
     'www.youtube.com',
     's.ytimg.com',
+    'optimize.google.com',  # google optimize
 ]
 CSP_STYLE_SRC = CSP_DEFAULT_SRC + [
     # TODO fix things so that we don't need this
     "'unsafe-inline'",
+    'tagmanager.google.com',  # google optimize
+    'fonts.googleapis.com',  # google optimize
+    'optimize.google.com',  # google optimize
 ]
-CSP_CHILD_SRC = [
+CSP_FONT_SRC = CSP_DEFAULT_SRC + [
+    'fonts.gstatic.com',  # google optimize
+]
+CSP_CHILD_SRC = CSP_DEFAULT_SRC + [
     'www.googletagmanager.com',
     'www.google-analytics.com',
     'www.youtube-nocookie.com',
@@ -1417,6 +1426,7 @@ CSP_CHILD_SRC = [
     'accounts.firefox.com',
     'accounts.firefox.com.cn',
     'www.youtube.com',
+    'optimize.google.com',  # google optimize
 ]
 CSP_CONNECT_SRC = CSP_DEFAULT_SRC + [
     'www.googletagmanager.com',
