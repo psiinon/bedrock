@@ -15,8 +15,8 @@
 {% endblock %}
 
 {% block experiments %}
-  {% if switch('experiment_firefox_new_privacy_dmt', ['en-US']) %}
-    {{ js_bundle('experiment_firefox_new_privacy_dmt') }}
+  {% if switch('experiment_firefox_new_pre_download', ['en-US']) %}
+    {{ js_bundle('experiment_firefox_new_pre_download') }}
   {% endif %}
 {% endblock %}
 
@@ -44,6 +44,7 @@
 {% block main_content %}
 <div class="main-download" {% if v %}data-variant="{{ v }}"{% endif %}>
   <div class="main-cta-wrapper">
+  {% block main_cta %}
     <div class="download-button-wrapper">
       {# **WARNING**
 
@@ -56,6 +57,7 @@
       #}
       {{ download_firefox(alt_copy=_('Download Now'), locale_in_transition=True, download_location='primary cta') }}
     </div>
+  {% endblock %}
   </div>
 
   <p class="linux-arm-download-instructions">
@@ -63,6 +65,7 @@
   </p>
 
   <ul id="other-platforms-languages-wrapper" class="small-links desktop hidden">
+    {% block small_link %}{% endblock %}
     <li><button id="other-platforms-modal-link" type="button">{{_('Advanced install options & other platforms') }}</button></li>
     <li><a href="{{ url('firefox.all') }}">{{_('Download in another language') }}</a></li>
   {% if l10n_has_tag('fxnew_account_032019') %}
@@ -108,18 +111,20 @@
 {% endblock %}
 
 {% block additional_content %}
-<aside class="newsletter-container">
-  <div class="content">
-    <div id="newsletter-subscribe">
-      <div class="newsletter-title">
-          <h3>{{ _('Keep up with<br> all things Firefox.') }}</h3>
-      </div>
-      <div class="newsletter-form-content">
-        {{ email_newsletter_form(include_title=False, button_class='button button-hollow', spinner_color='#fff') }}
+{% block newsletter_embed %}
+  <aside class="newsletter-container">
+    <div class="content">
+      <div id="newsletter-subscribe">
+        <div class="newsletter-title">
+            <h3>{{ _('Keep up with<br> all things Firefox.') }}</h3>
+        </div>
+        <div class="newsletter-form-content">
+          {{ email_newsletter_form(include_title=False, button_class='button button-hollow', spinner_color='#fff') }}
+        </div>
       </div>
     </div>
-  </div>
-</aside>
+  </aside>
+{% endblock %}
 
 <div id="other-platforms">
   <div class="content">
@@ -165,25 +170,9 @@
 </div>
 {% endif %}
 
-{% include 'firefox/includes/schemaorg-app.html' %}
-{% endblock %}
+{% block newsletter_modal %}{% endblock %}
 
-{% block stub_attribution %}
-  {% if settings.STUB_ATTRIBUTION_RATE %}
-    {% if LANG in ['en-US', 'en-CA', 'en-GB', 'de'] %}
-      <!--[if !lte IE 8]><!-->
-      {{ js_bundle('stub-attribution-custom') }}
-      {% if switch('experiment_firefox_new_headlne_en', ['en-US', 'en-CA', 'en-GB']) %}
-        {{ js_bundle('experiment-firefox-new-headline-en') }}
-      {% endif %}
-      {% if switch('experiment_firefox_new_headlne_de', ['de']) %}
-        {{ js_bundle('experiment-firefox-new-headline-de') }}
-      {% endif %}
-      <!--<![endif]-->
-    {% else %}
-      {{ js_bundle('stub-attribution') }}
-    {% endif %}
-  {% endif %}
+{% include 'firefox/includes/schemaorg-app.html' %}
 {% endblock %}
 
 {% block js %}

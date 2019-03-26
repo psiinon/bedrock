@@ -135,7 +135,6 @@
                     enableFormFields();
                     newsletterSuccess();
 
-
                     if (window.dataLayer) {
                         window.dataLayer.push({
                             'event': 'newsletter-signup-success',
